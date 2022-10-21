@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:postgresql://localhost:5432/itemservice
+    username: sa
+    password:
+    driver-class-name: org.postgresql.Driver
+#jdbcTemplate sql log
+logging:
+  level:
+    org:
+      springframework:
+        jdbc: debug

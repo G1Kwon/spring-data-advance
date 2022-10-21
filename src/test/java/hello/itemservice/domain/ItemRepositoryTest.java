@@ -8,12 +8,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+//테스트 할 경우에는 MemoryConfig로 바꾼다.
 @SpringBootTest
+@ActiveProfiles("test")
 class ItemRepositoryTest {
 
     @Autowired

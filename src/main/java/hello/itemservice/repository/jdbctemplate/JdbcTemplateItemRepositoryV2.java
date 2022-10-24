@@ -17,7 +17,6 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -40,15 +39,15 @@ public class JdbcTemplateItemRepositoryV2 implements ItemRepository {
 
     @Override
     public Item save(Item item) {
-        String sql = "insert into item(item_name:itemName, price:price, quantity:quantity) " +
+        String sql = "insert into item(item_name, price, quantity) " +
                 "values (:itemName, :price, :quantity)";
         SqlParameterSource param = new BeanPropertySqlParameterSource(item);
-
         KeyHolder keyHolder = new GeneratedKeyHolder();
+        template.update(sql, param, keyHolder, new String[]{"id"});
 
         long key = keyHolder.getKey().longValue();
         item.setId(key);
-        return null;
+        return item;
     }
 
     @Override

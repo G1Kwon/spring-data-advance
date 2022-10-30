@@ -12,13 +12,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//테스트 할 경우에는 MemoryConfig로 바꾼다.
+@Transactional
 @SpringBootTest
 @ActiveProfiles("test")
 class ItemRepositoryTest {
@@ -26,7 +27,9 @@ class ItemRepositoryTest {
     @Autowired
     ItemRepository itemRepository;
 
-    @Autowired
+
+    //트랜잭션 관련 코드
+/*    @Autowired
     PlatformTransactionManager transactionManager;
     TransactionStatus status;
 
@@ -34,7 +37,7 @@ class ItemRepositoryTest {
     void beforeEach() {
         //트랜잭션 시작
         status = transactionManager.getTransaction(new DefaultTransactionDefinition());
-    }
+    }*/
 
     @AfterEach
     void afterEach() {
@@ -43,7 +46,7 @@ class ItemRepositoryTest {
             ((MemoryItemRepository) itemRepository).clearStore();
         }
         //트랜잭션 롤백
-        transactionManager.rollback(status);
+//        transactionManager.rollback(status);
     }
 
     @Test

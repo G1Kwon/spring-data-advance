@@ -7,9 +7,18 @@ spring:
     username: sa
     password:
     driver-class-name: org.postgresql.Driver
-#jdbcTemplate sql log
+#Sql log
 logging:
   level:
     org:
       springframework:
         jdbc: debug
+    hello:
+      itemservice:
+        repository:
+          mybatis: trace
+#mybatis
+mybatis:
+  type-aliases-package: hello.itemservice.domain
+  configuration:
+    map-underscore-to-camel-case: true

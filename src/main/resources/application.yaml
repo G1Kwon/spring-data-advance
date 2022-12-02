@@ -13,6 +13,12 @@ logging:
     org:
       springframework:
         jdbc: debug
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
     hello:
       itemservice:
         repository:

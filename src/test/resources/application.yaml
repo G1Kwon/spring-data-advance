@@ -14,6 +14,12 @@ logging:
       springframework:
         jdbc: debug
         mybatis: trace
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
 #mybatis
 mybatis:
   type-aliases-package: hello.itemservice.domain
